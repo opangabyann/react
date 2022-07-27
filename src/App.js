@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./Component/header";
+import Page from "./page";
+import Tes from "./Component/module/Tes";
+import {Input , Button} from "./Component/Name"
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <h1>latihan export import</h1>
+      <Header/>
+      <Page/>
+      <Tes/>
+      <Input />
+      <Button/>
+    </React.Fragment>
   );
 }
 
-export default App;
+export default App
