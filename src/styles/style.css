@@ -1,3 +1,15 @@
 .input {
     background-color: aquamarine;
 }
+
+.identitas {
+    /* background-color: chocolate; */
+    padding: 5px 10px;
+    border: 1px solid royalblue;
+    width: 150px;
+}
+
+.section{
+    display: flex;
+    flex-direction: row;
+}
