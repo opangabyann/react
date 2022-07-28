@@ -1,5 +1,7 @@
 import React from "react";
+
 import Header from "./Component/header";
+
 import Page from "./page";
 import Tes from "./Component/module/Tes";
 import {Input , Button} from "./Component/Name"
@@ -17,4 +19,4 @@ function App () {
   );
 }
 
-export default App
+export default App;
