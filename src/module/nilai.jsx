@@ -16,7 +16,7 @@ export default function Nilai({nama,data}){
 
                 {data?.map((item,index)=>{
                     return(
-                        <li>Nilai ujian ke-{index} adalah {item}</li>
+                        <li>Nilai ujian {nama} ke-{index} adalah {item}</li>
                     )
                 })}
             </ol>
