@@ -36,12 +36,14 @@
     flex-direction: column;
 }
 .input-text{
-    
-    padding: 5px 5px;
-    margin-top: 5px;
+    border: 1px solid rgb(82, 82, 133);
+    padding: 7px 7px;
+    margin-top: 7px;
+    margin-bottom: 3px;
     border-radius: 5px;
-    width: 20%;
+    width: 80%;
 }
+
 .error{
     color: red;
     font-style: italic;
