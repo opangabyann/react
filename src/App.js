@@ -6,7 +6,7 @@ import Select from "./komponen/select";
 
 function App() {
   const [values, setValues] = React.useState({
-    nama: '',
+    nama: "",
     email: "",
     tempatLahir: "",
     tanggalLahir: "",
@@ -15,50 +15,48 @@ function App() {
     confirmPassword: "",
   });
 
-  const [data,setData]= React.useState([])
+  const [data, setData] = React.useState([]);
 
   const handleChange = (e) => {
     e.preventDefault();
     // console.log("sabi");
-    setValues ((values)=>{
+    setValues((values) => {
       return {
         ...values,
-        [e.target.name] : e.target.values,
-      }
-    })
+        [e.target.name]: e.target.values,
+      };
+    });
   };
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values)
+    console.log(values);
     setData((data) => {
-      return [...data, values]
-    })
+      return [...data, values];
+    });
+  };
 
-
-  }
-
-  const handleReset = (e)=>{
+  const handleReset = (e) => {
     e.preventDefault();
-    setValues((values)=> {
-      return{
+    setValues((values) => {
+      return {
         nama: "",
-    email: "",
-    tempatLahir: "",
-    tanggalLahir: "",
-    jenisKelamin: "",
-    password: "",
-    confirmPassword: "",
-      }
-    })
-  }
+        email: "",
+        tempatLahir: "",
+        tanggalLahir: "",
+        jenisKelamin: "",
+        password: "",
+        confirmPassword: "",
+      };
+    });
+  };
   return (
     <React.Fragment>
       <div style={{ display: "flex" }}>
         <form onSubmit={handleSubmit}>
           <Input
             value={values.nama}
-            name ="nama"
+            name="nama"
             label={"nama"}
             placeholder={"nama"}
             onChange={handleChange}
@@ -90,7 +88,7 @@ function App() {
             name="jenisKelamin"
             label={"jenis kelamin"}
             placeholder={"jenis kelamin"}
-            type={<Select/>}
+            type={<Select />}
             onChange={handleChange}
           />
           <Input
@@ -106,15 +104,17 @@ function App() {
             label={"konfirmasi password"}
             placeholder={"konfirmasi password"}
             onChange={handleChange}
-          /> 
+          />
 
-          <button onClick={handleReset} className="reset">reset</button>
-          <button  className="simpan">simpan</button>
+          <button onClick={handleReset} className="reset">
+            reset
+          </button>
+          <button className="simpan">simpan</button>
         </form>
 
         <div>
           {/* <p>nama : {values?.nama}</p> */}
-        <Card data={data}/>
+          <Card data={data} />
         </div>
       </div>
     </React.Fragment>
