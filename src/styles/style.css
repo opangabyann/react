@@ -1,3 +1,30 @@
+
+
 .input {
-    background-color: aquamarine;
+    background-color: white;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px ;
+}
+.input-text{
+    width: 80%;
+    margin-top: 8px;
+    height: 20px;
+}
+.reset{
+    color: white;
+    font-weight: bold;
+    width: 100px;
+    height: 30px;
+    margin-left: 9px;
+    background-color: red;
+}
+.simpan{
+    color: white;
+    font-weight: bold;
+    width: 100px;
+    height: 30px;
+    margin-left: 50px;
+    background-color: blue;
 }
