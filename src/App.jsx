@@ -8,6 +8,9 @@ import NotFound from "./pages/notFound";
 import Phone from "./pages/setting/phone";
 import Profile from "./pages/setting/profile";
 import Komputer from "./pages/setting/komputer";
+import Lenovo from "./pages/setting/komputer/lenovo";
+import Apple from "./pages/setting/komputer/apple";
+import Asus from "./pages/setting/komputer/asus";
 
 export default function App() {
   return (
@@ -45,9 +48,13 @@ export default function App() {
           </NavLink> */}
       </div>
       <Routes>
-        <Route path="/" element={<p>tes doang aja si</p>} />
+        <Route path="/" element={<Home/>} />
         <Route path="/setting" element={<Setting />}>
-          <Route path="komputer" element={<Komputer/>} />
+          <Route path="komputer" element={<Komputer/>} >
+            <Route path="lenovo" element={<Lenovo/>}/>
+            <Route path="apple" element={<Apple/>}/>
+            <Route path="asus" element={<Asus/>}/>
+          </Route>
           <Route path="phone" element={<Phone/>} />
           <Route path="profile" element={<Profile/>} />
         </Route>
