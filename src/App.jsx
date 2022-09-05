@@ -1,68 +1,29 @@
 import React from "react";
-import { Routes, Route, Link, NavLink, Navigate } from "react-router-dom";
-import Setting from "./pages/setting";
-import About from "./pages/about";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/home";
-import Detail from "./pages/detail";
-import NotFound from "./pages/notFound";
-import Phone from "./pages/setting/phone";
-import Profile from "./pages/setting/profile";
-import Komputer from "./pages/setting/komputer";
-import Lenovo from "./pages/setting/komputer/lenovo";
-import Apple from "./pages/setting/komputer/apple";
-import Asus from "./pages/setting/komputer/asus";
+import Admin from "./pages/admin";
+import Register from "./pages/register";
+import Dashboard from "./pages/admin/Dashboard";
+import Kelas from "./pages/admin/kelas";
+import User from "./pages/admin/user";
+import UserDetail from "./pages/admin/detail";
 
 export default function App() {
   return (
     <React.Fragment>
-      <div className="space-x-5 py-5 border">
-        {/* <Link to={"/"}>Home</Link>
-          <Link to={"/setting"}>setting</Link>
-          <Link to={"/about"}>about</Link> */}
-
-        <NavLink
-          to="/"
-          style={({ isActive }) => (isActive ? { color: "red" } : undefined)}
-        >
-          Home
-        </NavLink>
-
-        <NavLink
-          to="/setting"
-          style={({ isActive }) => (isActive ? { color: "red" } : undefined)}
-        >
-          setting
-        </NavLink>
-
-        <NavLink
-          to="/about"
-          style={({ isActive }) => (isActive ? { color: "red" } : undefined)}
-        >
-          about
-        </NavLink>
-
-        {/* <NavLink  to="/about" style={({ isActive }) =>
-              isActive ? {color : "red"} : undefined
-            }>
-            about
-          </NavLink> */}
-      </div>
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/setting" element={<Setting />}>
-          <Route path="komputer" element={<Komputer/>} >
-            <Route path="lenovo" element={<Lenovo/>}/>
-            <Route path="apple" element={<Apple/>}/>
-            <Route path="asus" element={<Asus/>}/>
-          </Route>
-          <Route path="phone" element={<Phone/>} />
-          <Route path="profile" element={<Profile/>} />
+      <Route path="/" element={<Home />}></Route>
+        <Route path="/login" element={<Home />}/>
+        <Route path="/register" element={<Register/>} />
+        <Route path="/admin" element={<Admin />} >
+          <Route path="dashboard" element={<Dashboard />}/>
+          <Route path="user" element={<User/>}/>
+          <Route path="user/:id/:kelas" element={<UserDetail />} />
+          <Route path="kelas" element={<Kelas />}/>
         </Route>
-        <Route path="/about" element={<About />} />
-        <Route path="/about/:id/:nama" element={<Detail />} />
-        <Route path="404" element={<NotFound />} />
-        <Route path="/home" element={<Navigate to={"/"} replace />} />
-        <Route path="*" element={<Navigate to={"/404"} replace />} />
+
+        <Route path="/" element={<Navigate to={"/login"} replace />} />
+        <Route path="*" element={<Navigate to={"/"} replace />} />
       </Routes>
     </React.Fragment>
   );
