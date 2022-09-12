@@ -1,12 +1,14 @@
 import React from "react";
 import axios from "axios";
+import { Link,  } from "react-router-dom";
 
 export default function User() {
   const [users, setUsers] = React.useState([]);
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = React.useState(100);
+  // const navigate = useNavigate()x
   const getUserHandle = async () => {
     try {
-      const response = await axios.get(`https://reqres.in/api/users?page= ${page}`);
+      const response = await axios.get("https://belajar-react.smkmadinatulquran.sch.id/api/users/2");
       console.log("response =>", response.data);
       setUsers(response.data.data);
       setPage(response.data.page);
@@ -23,16 +25,18 @@ export default function User() {
     <div>
       
 
-      <h1>table user</h1>
-      <table className="table-cell">
+      <h1 className="">table user</h1>
+      <Link to={"/user/create"} className=""> <p>tambah user</p></Link>
+      <table className="table-auto">
         <thead>
           <tr>
             <th>No</th>
+            <th>username</th>
+            <th>nama</th>
             <th>email</th>
-            <th>first name</th>
-            <th>last name</th>
-            <th>Avatar</th>
-            <th>Detail</th>
+            <th>jenis kelamin</th>
+            <th>Dibuat</th>
+            <th>diupdate</th>
           </tr>
         </thead>
         <tbody>
@@ -41,12 +45,15 @@ export default function User() {
             return (
               <tr key={index} className="text-left border">
                 <td>{index +1}</td>
+                <td>{user.username}</td>
+                <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.first_name}</td>
-                <td>{user.last_name}</td>
-                <td>
+                <td>{user.jenis_kelamin}</td>
+                <td>{user.stored_at}</td>
+                <td>{user.updated_at}</td>
+                {/* <td>
                     <img className="rounded-full h-5 w-5" src={user.avatar} alt={user.avatar} />
-                </td>
+                </td> */}
               </tr>
             );
           })}

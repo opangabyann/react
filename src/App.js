@@ -10,6 +10,7 @@ export default function App(){
 
             <Routes>
                 <Route path="/user" element={<User/>}/>
+                <Route path="/user/create" element={<User/>}/>
                 <Route path="/user/:id/detail" element={<Detail/>}/>
                 <Route path="*" element={<Navigate to={"/user"} replace={true}/>}/>
             </Routes>
