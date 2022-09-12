@@ -2,27 +2,27 @@ import axios from "axios";
 import React from "react";
 import "../styles/style.css"
 
-const User = () => {
-  const [quran, setQuran] = React.useState([]); //state untuk menyimpan data user dari API
-  const [page, setPage] = React.useState(1);
+export default function Surat () {
+  const [quran, setQuran] = React.useState([]); 
+  // const [page, setPage] = React.useState(1);
 
   const getUsersHandle = async () => {
     try {
       const response = await axios.get("https://equran.id/api/surat");
       console.log("Response =>", response.data);
       setQuran(response.data);
-      setPage(response.data);
+      // setPage(response.data);
     } catch (err) {}
   };
 
   console.log("User =>", quran);
-  console.log("page =>", page);
+  // console.log("page =>", page);
 
   React.useEffect(() => {
     getUsersHandle();
   }, []);
   return (
-    <div className=" grid grid-cols-3 gap-3 p pt-3">
+    <div className=" grid grid-cols-3 gap-3  pt-3">
       {quran.map((quran, index) => {
         return (
           <div className="card">
@@ -35,8 +35,8 @@ const User = () => {
               <div className="card-body px-5 mt-5 ">
                 <h1 className="text-right"> {quran.nama}</h1>
               </div>
-              <div className="card-tempat flex justify-end px-5">
-                <p className="mr-2">{quran.tempat_turun}</p>
+              <div className="card-tempat flex justify-end px-5 my-7">
+              <p className="flex justify-start">{quran.tempat_turun} - </p>
                 <p>{quran.arti}</p>
               </div>
 
@@ -48,4 +48,3 @@ const User = () => {
   );
 };
 
-export default User;
