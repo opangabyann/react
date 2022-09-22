@@ -7,10 +7,15 @@
     flex-direction: column;
     padding: 10px ;
 }
+.border{
+  border: solid black 1px;
+  border-radius: 30;
+}
 .input-text{
-    width: 80%;
-    margin-top: 8px;
-    height: 20px;
+    /* width: 80%; */
+    margin-top: 10px;
+    margin-left: 10px;
+    /* height: px; */
 }
 .reset{
     color: white;

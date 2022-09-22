@@ -1,20 +1,21 @@
+
 import Input from "../komponen/input";
 import Button from "../komponen/button";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import axios from "axios";
-import Select from "../komponen/jenisklmn";
+// import Select from "../komponen/jenisklmn";x 
 
-export default function Create() {
+export default function UpdateUser() {
     let navigate = useNavigate()
+    let {id} = useParams()
   const [loading, setLoading] = React.useState(false);
   const [user, setUser] = React.useState({
     username: "",
     email: "",
     name: "",
     jenis_kelamin: "laki-laki",
-    password: "",
-    password_confirmation: "",
+ 
   });
 
   const handleChange = (e) => {
@@ -28,18 +29,43 @@ export default function Create() {
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    // console.log(user);
+    console.log(user);
+
     try{
         setLoading(false)
-        const response = await axios.post("https://belajar-react.smkmadinatulquran.sch.id/api/users/create")
-
+        const response = await axios.put(`https://belajar-react.smkmadinatulquran.sch.id/api/users/update/${id}`)
+        // setLoading(true)
         // return navigate ("/user")
     }catch(err){
+
     }
+  };
+
+  const getDetailUser = async(id)=>{
+    try{
+        const response = await axios.post(`https://belajar-react.smkmadinatulquran.sch.id/api/users/detail/${id}`)
+
+        console.log(response.data)
+
+        const dataUser = response.data.data;
+
+        console.log(dataUser)
+        setUser((user)=>{
+            return {
+                username: dataUser.username,
+                email: dataUser.email,
+                name: dataUser.name,
+                jenis_kelamin: dataUser.jenis_kelamin,
+            }
+        })
+    }catch(err){}
   }
+  React.useEffect(()=>{
+    getDetailUser()
+  },[])
   return (
     <div>
-      <h1>tambah user</h1>
+      <h1>user dengan id {id}</h1>
       <form action="" onSubmit={handleSubmit}>
         <div>
           <label htmlFor=""></label>
@@ -54,16 +80,7 @@ export default function Create() {
           <Input value={user.email} name={"email"} label={"email"} onChange={handleChange} />
           <Input value={user.jenis_kelamin} name={"jenis_kelamin"} label={"jenis_kelamin"} onChange={handleChange} />
 
-         {/* <Select 
-         value={user.jenis_kelamin}
-         name={"jenis_kelamin"}
-         label={"jenis_kelamin"}
-         onChange={handleChange}>
-         <option >pilih option</option>
-            <option value={"laki-laki"}>laki-laki</option>
-            <option value={"perempuan"}>perempuan</option>
-         </Select> */}
-
+          
           <Input
             value={user.password}
             name={"password"}
@@ -78,7 +95,7 @@ export default function Create() {
 
           />
 
-          <Button title={setLoading ? "simpan" : "sedang menyimpan"} />
+          <Button title={setLoading ? "sedang" : "simpan"} />
         </div>
       </form>
     </div>
