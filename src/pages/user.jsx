@@ -30,7 +30,7 @@ export default function User() {
       <h1 className="">table user</h1>
       <Link to={"/user/create"}> <p>tambah user</p></Link>
       <table className="table-auto">
-        <thead>
+        <thead className="table-auto">
           <tr>
             <th>No</th>
             <th>username</th>
@@ -42,7 +42,7 @@ export default function User() {
             <th>Aksi</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table-auto">
           {users.map((user,index
           ) => {
             return (

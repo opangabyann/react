@@ -35,9 +35,9 @@ export default function Button({ title, color = "red", disabled, ...props }) {
         style={{
           backgroundColor: color,
           opacity: disabled ? 0.5 : 1,
-          
+          padding: 5
         }}
-        className="button"
+        className="button border-2 border-black rounded-lg mx-2"
       >
         {title}
       </button>

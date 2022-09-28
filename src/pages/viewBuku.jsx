@@ -6,7 +6,7 @@ import { useNavigate,useParams } from "react-router-dom";
 import axios from "axios";
 // import Select from "../komponen/jenisklmn";x 
 
-export default function UpdateBuku() {
+export default function DetailBuku() {
     // let navigate = useNavigate()
     let {id} = useParams()
   const [loading, setLoading] = React.useState(false);
@@ -32,6 +32,7 @@ export default function UpdateBuku() {
 
   const handleSubmit = async(id)=>{
     id.preventDefault()
+    console.log(buku);
 
     try{
         setLoading(false)
@@ -79,10 +80,11 @@ export default function UpdateBuku() {
             label={"kode penulis"}
             placeholder={"kode penulis"}
             onChange={handleChange}
+            disabled
           />
-          <Input value={buku.judul_buku} name={"judul_buku"} label={"judul_buku"} onChange={handleChange} />
-          <Input value={buku.nama_pengarang} name={"nama_pengarang"} label={"nama pengarang"} onChange={handleChange} />
-          <Input value={buku.nama_penerbit_buku} name={"nama_penerbit_buku"} label={"penerbit"} onChange={handleChange} />
+          <Input value={buku.judul_buku} name={"judul_buku"} label={"judul_buku"} onChange={handleChange} disabled/>
+          <Input value={buku.nama_pengarang} name={"nama_pengarang"} label={"nama pengarang"} onChange={handleChange} disabled/>
+          <Input value={buku.nama_penerbit_buku} name={"nama_penerbit_buku"} label={"penerbit"} onChange={handleChange} disabled/>
 
           
           <Input
@@ -90,12 +92,14 @@ export default function UpdateBuku() {
             name={"ketebalan_buku"}   
             label={"ketebalan"}
             onChange={handleChange}
+            disabled
           />
           <Input
             value={buku.tahun_terbit_buku}
             name={"tahun_terbit_buku"}
             label={"tahun terbit"}
             onChange={handleChange}
+            disabled
 
           />
           <Input
@@ -103,7 +107,7 @@ export default function UpdateBuku() {
             name={"sinopsis"}
             label={"sinopsis"}
             onChange={handleChange}
-
+            disabled
           />
 
           <Button title={"update"} color="white"/>
