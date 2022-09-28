@@ -4,10 +4,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Select from "../komponen/jenisklmn";
+import Swal from 'sweetalert2'
+
 
 export default function Create() {
     let navigate = useNavigate()
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [user, setUser] = React.useState({
     username: "",
     email: "",
@@ -31,10 +33,25 @@ export default function Create() {
     // console.log(user);
     try{
         setLoading(false)
-        const response = await axios.post("https://belajar-react.smkmadinatulquran.sch.id/api/users/create")
-
+        const response = await axios.post("https://belajar-react.smkmadinatulquran.sch.id/api/users/create",user)
+        setLoading(true)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'udah disimpen ke backend',
+          showConfirmButton: false,
+          timer: 1500
+        })
         // return navigate ("/user")
     }catch(err){
+      setLoading(true)
+
+      Swal.fire({
+        icon: 'error',
+        title: 'yahh gagal maseh',
+        text: 'ada yang masih kosong itu mas',
+        // footer: '<a href="">Why do I have this issue?</a>'
+      })
     }
   }
   return (
@@ -78,7 +95,7 @@ export default function Create() {
 
           />
 
-          <Button title={setLoading ? "simpan" : "sedang menyimpan"} />
+          <Button title={loading ? "simpan" : "sedang menyimpan"} text={"black"} color={"white"}/>
         </div>
       </form>
     </div>

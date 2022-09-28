@@ -33,7 +33,7 @@ export default function UpdateUser() {
 
     try{
         setLoading(false)
-        const response = await axios.put(`https://belajar-react.smkmadinatulquran.sch.id/api/users/update/${id}`)
+        const response = await axios.put(`https://belajar-react.smkmadinatulquran.sch.id/api/users/update/${id}`,user)
         // setLoading(true)
         // return navigate ("/user")
     }catch(err){
@@ -43,7 +43,7 @@ export default function UpdateUser() {
 
   const getDetailUser = async(id)=>{
     try{
-        const response = await axios.post(`https://belajar-react.smkmadinatulquran.sch.id/api/users/detail/${id}`)
+        const response = await axios.get(`https://belajar-react.smkmadinatulquran.sch.id/api/users/detail/${id}`)
 
         console.log(response.data)
 
@@ -62,7 +62,7 @@ export default function UpdateUser() {
   }
   React.useEffect(()=>{
     getDetailUser()
-  },[])
+  },[id])
   return (
     <div>
       <h1>user dengan id {id}</h1>

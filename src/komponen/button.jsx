@@ -26,7 +26,7 @@ import React from "react";
 //   );
 // }
 
-export default function Button({ title, color = "red", disabled, ...props }) {
+export default function Button({ title, text = "",color = "red", disabled, ...props }) {
   return (
     <React.Fragment>
       <button
@@ -35,9 +35,9 @@ export default function Button({ title, color = "red", disabled, ...props }) {
         style={{
           backgroundColor: color,
           opacity: disabled ? 0.5 : 1,
-          
+          color: text,
         }}
-        className="button"
+        className="button border-2 border-black rounded-lg mx-2 p-2"
       >
         {title}
       </button>
