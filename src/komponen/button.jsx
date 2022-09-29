@@ -37,7 +37,7 @@ export default function Button({ title, text = "",color = "red", disabled, ...pr
           opacity: disabled ? 0.5 : 1,
           color: text,
         }}
-        className="button border-2 border-black rounded-lg mx-2 p-2"
+        className="button border-2 border-black rounded-lg mx-2  px-5 py-1"
       >
         {title}
       </button>

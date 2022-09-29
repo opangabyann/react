@@ -5,6 +5,7 @@ import Button from "../komponen/button";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Skeleton from 'react-loading-skeleton'
+import { Delete, GetAllUser } from "../Api/user";
 
 export default function User() {
   const navigate = useNavigate();
@@ -16,9 +17,7 @@ export default function User() {
   const getUserHandle = async () => {
     try {
       setIsFetchUser(true)
-      const response = await axios.get(
-        `https://belajar-react.smkmadinatulquran.sch.id/api/users/${page}`
-      );
+      const response = await GetAllUser(page)
 
       setUsers(response.data.data);
 
@@ -42,9 +41,7 @@ export default function User() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await axios.delete(
-            `https://belajar-react.smkmadinatulquran.sch.id/api/users/hapus/${id}`
-          );
+          const response = await Delete(id)
           Swal.fire("dihapus!", "udah di apus!", "success");
         } catch (e) {
           Swal.fire("gagal!", "gagal ngapus!", "error");

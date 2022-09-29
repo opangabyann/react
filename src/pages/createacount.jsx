@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Select from "../komponen/jenisklmn";
 import Swal from "sweetalert2";
+import { CreateUser } from "../Api/user";
 
 export default function Create() {
   let navigate = useNavigate();
@@ -46,10 +47,7 @@ export default function Create() {
     // console.log(user);
     try {
       setLoading(false);
-      const response = await axios.post(
-        "https://belajar-react.smkmadinatulquran.sch.id/api/users/create",
-        user
-      );
+      const response = await CreateUser(user)
       setLoading(true);
       Swal.fire({
         position: "top-end",
@@ -169,7 +167,9 @@ export default function Create() {
             color={"white"}
           />
 
-          <Button title={"kembali"} text={"black"} color={"white"} />
+          <Button title={"kembali"} text={"black"} color={"white"} onClick={()=>{
+            navigate ('/user')
+          }}/>
         </div>
       </form>
     </div>

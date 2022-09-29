@@ -11,6 +11,7 @@ export default function App(){
             <h1 className="bg-red-500">Belajar Api</h1>
 
             <Routes>
+            <Route path="/" element={<User/>}/>
                 <Route path="/user" element={<User/>}/>
                 <Route path="/user/create" element={<Create/>}/>
                 <Route path="/user/update/:id" element={<UpdateUser/>}/>
