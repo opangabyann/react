@@ -10,17 +10,18 @@ export default function User() {
   const navigate = useNavigate();
   const [users, setUsers] = React.useState([]);
   const [page, setPage] = React.useState(100);
+  const [messageError, setMessageError] = React.useState("");
   const [isFetchUser, setIsFetchUser] = React.useState(false)
   // const navigate = useNavigate()x
   const getUserHandle = async () => {
     try {
       setIsFetchUser(true)
       const response = await axios.get(
-        "https://belajar-react.smkmadinatulquran.sch.id/api/users/100"
+        `https://belajar-react.smkmadinatulquran.sch.id/api/users/${page}`
       );
 
       setUsers(response.data.data);
-      setPage(response.data.page);
+
     } catch (err) {
       console.log(err);
     }finally{
