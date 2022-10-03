@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Skeleton from 'react-loading-skeleton'
 import { Delete, GetAllUser } from "../Api/user";
+import Cookies from "js-cookie";
 
 export default function User() {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ export default function User() {
 
   React.useEffect(() => {
     getUserHandle();
-  }, [page]);
+  }, []);
   console.log("user", users);
   console.log("page", page);
   return (
@@ -65,6 +66,10 @@ export default function User() {
           navigate("/user/create");
         }}
       />
+      <Button title={"logout"} color={"red"} text={"white"} onClick={()=>{
+        Cookies.remove('myapps_token');
+        return navigate('/login')
+      }}/>
       <table className="table-auto">
         <thead>
           <tr>

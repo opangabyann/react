@@ -8,14 +8,14 @@
     padding: 10px ;
 }
 .border{
-  border: solid black 1px;
-  border-radius: 30;
+  /* border: solid black 1px; */
+  border-radius: 50;
 }
 .input-text{
     /* width: 80%; */
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 10px;
-    /* height: px; */
+    height: 40px;
 }
 .reset{
     color: white;
