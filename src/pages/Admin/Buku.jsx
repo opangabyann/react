@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 export default function Buku() {
   const navigate = useNavigate();
   const [buku, setBuku] = React.useState([]);
+  const [loading,setLoading] = React.useState(false);
+  const [messageError, setMessageError] = React.useState("")
   const getUserHandle = async () => {
     try {
       const response = await axios.get(
@@ -19,7 +21,18 @@ export default function Buku() {
   React.useEffect(() => {
     getUserHandle();
   }, []);
-  console.log(buku);
+
+
+  const deleteuser = async (id) => {
+    try{
+      setLoading(true)
+      const response = await axios.delete(`https://api-react-2.herokuapp.com/api/perpustakaan/${id}?kode=44444`);
+      getUserHandle()
+      setLoading(false)
+    }catch(err) {
+    }
+    console.log("delete",deleteuser)
+  }
   return (
     <React.Fragment>
       <div>
@@ -61,12 +74,29 @@ export default function Buku() {
                     <td>{buku.ketebalan_buku}</td>
                     <td>{buku.sinopsis}</td>
                     <td>
-                    <Button title="edit" color="white" onClick={()=>{
-                        return navigate(`/buku/update/${buku.id}`)
-                      }}/>
-                      <Button title="view" color="white" onClick={()=>{
-                        return navigate(`/buku/view/${buku.id}`)
-                      }}/>
+                      <Button
+                        title="edit"
+                        color="white"
+                        onClick={() => {
+                          return navigate(`/buku/update/${buku.id}`);
+                        }}
+                      />
+                      <Button
+                        title="view"
+                        color="white"
+                        onClick={() => {
+                          return navigate(`/buku/view/${buku.id}`);
+                        }}
+                      />
+
+                      <Button
+                        title={loading? "sedang menghapus":" hapus"}
+                        color="red"
+                        text={"white"}
+                        onClick={() => {
+                          deleteuser(buku.id);
+                        }}
+                      />
                     </td>
                   </tr>
                 );

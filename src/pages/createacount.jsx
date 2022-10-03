@@ -32,9 +32,10 @@ export default function Create() {
     try{
         setLoading(false)
         const response = await axios.post("https://belajar-react.smkmadinatulquran.sch.id/api/users/create")
-
+        setLoading(true)
         // return navigate ("/user")
     }catch(err){
+      setLoading(true)
     }
   }
   return (

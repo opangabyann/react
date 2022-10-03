@@ -30,16 +30,18 @@ export default function UpdateBuku() {
     });
   };
 
-  const handleSubmit = async(id)=>{
-    id.preventDefault()
+  const handleSubmit = async(e)=>{
+    e.preventDefault()
 
     try{
-        setLoading(false)
+        setLoading(true)
         const response = await axios.put(`https://api-react-2.herokuapp.com/api/perpustakaan/${id}?kode=44444`,buku)
         // setLoading(true)
         // return navigate ("/buku")
+        setLoading(false)
     }catch(err){
-
+      console.log(err)
+      setLoading(false)
     }
   };
 
@@ -106,7 +108,7 @@ export default function UpdateBuku() {
 
           />
 
-          <Button title={"update"} color="white"/>
+          <Button title={loading ? "sedang mengupdate":"update"} color="white"/>
         </div>
       </form>
     </div>
