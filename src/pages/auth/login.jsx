@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import Input from "../../komponen/input";
 import { LoginProsses } from "../../Api/auth";
+import Swal from "sweetalert2";
+
 
 export default function Login() {
   const navigate = useNavigate();
@@ -29,10 +31,15 @@ export default function Login() {
         const response = await LoginProsses(Payload);
         const data = response.data;
         Cookies.set("myapps_token" , data?.token);
-        return navigate('/user');
+        return navigate('/artikel');
                
     } catch (e) {
-
+      console.log(e)
+      Swal.fire({
+        icon: 'error',
+        title: 'gagal mas!',
+        text: 'Ada yang masih kosong masehh',
+      })
     }finally{
         setLoading(false) 
     }

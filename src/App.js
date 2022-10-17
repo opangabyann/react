@@ -6,6 +6,8 @@ import User from "./pages/user";
 import Detail from "./pages/userdetail";
 import Login from "./pages/auth/login";
 import ProtectedRoute from "./routers/protectRoute";
+import Artikel from "./pages/artikel/indegs";
+import Createartikel from "./pages/artikel/createArtikel";
 
 
 export default function App() {
@@ -15,6 +17,22 @@ export default function App() {
 
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/artikel"
+          element={
+            <ProtectedRoute>
+              <Artikel/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+        path="/artikel/create"
+        element={
+          <ProtectedRoute>
+            <Createartikel/>
+          </ProtectedRoute>
+        }
+      />
         <Route
           path="/user"
           element={
