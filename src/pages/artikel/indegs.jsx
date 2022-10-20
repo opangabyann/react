@@ -83,7 +83,7 @@ export default function Artikel() {
                       text="white"
                       color="blue"
                       onClick={() => {
-                        return navigate("/");
+                        return navigate(`/artikel/edit/${artikel?.slug}`);
                       }}
                     />
                   </td>

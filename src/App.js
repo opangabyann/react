@@ -8,6 +8,7 @@ import Login from "./pages/auth/login";
 import ProtectedRoute from "./routers/protectRoute";
 import Artikel from "./pages/artikel/indegs";
 import Createartikel from "./pages/artikel/createArtikel";
+import Editartikel from "./pages/artikel/editArtikel";
 
 
 export default function App() {
@@ -30,6 +31,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <Createartikel/>
+          </ProtectedRoute>
+        }
+      />
+       <Route
+        path="/artikel/edit/:slug"
+        element={
+          <ProtectedRoute>
+            <Editartikel/>
           </ProtectedRoute>
         }
       />
