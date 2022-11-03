@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useSyncExternalStore } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Create from "./pages/createacount";
 import UpdateUser from "./pages/updateUser";
@@ -9,15 +9,23 @@ import ProtectedRoute from "./routers/protectRoute";
 import Artikel from "./pages/artikel/indegs";
 import Createartikel from "./pages/artikel/createArtikel";
 import Editartikel from "./pages/artikel/editArtikel";
-
+import { useSelector } from "react-redux";
+import Register from "./pages/auth/register";
 
 export default function App() {
+  const warna = useSelector((state)=> state.color)
+  console.log("color", warna.color)
   return (
     <React.Fragment>
-      <h1 className="bg-red-500">Belajar Api</h1>
+      <h4>{warna.color}</h4>
+      <h1 style={{
+        backgroundColor : warna.color
+      }}>Belajar Api</h1>
 
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
         <Route
           path="/artikel"
           element={

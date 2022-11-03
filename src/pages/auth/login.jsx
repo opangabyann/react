@@ -5,11 +5,18 @@ import React from "react";
 import Input from "../../komponen/input";
 import { LoginProsses } from "../../Api/auth";
 import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { authLogin } from "../../redux/action/authAction";
 
 
 export default function Login() {
   const navigate = useNavigate();
+  let dispatch = useDispatch();
+  // const nama = useSelector((state)=> state)
+  // console.log("nama =>", nama)
   const [loading, setLoading] = React.useState(false);
+  const [messageError, setMessageError] = React.useState("");
+
   const [Payload, setPayload] = React.useState({
     email: "",
     password: "",
@@ -28,10 +35,13 @@ export default function Login() {
     e.preventDefault();
     try {
         setLoading(true)
-        const response = await LoginProsses(Payload);
-        const data = response.data;
-        Cookies.set("myapps_token" , data?.token);
-        return navigate('/artikel');
+        const response = await dispatch(authLogin(Payload));
+        console.log('response =>',response)
+        if(response?.status === 'Success'){
+          return navigate('/artikel')
+        }else{
+          setMessageError(response?.response?.data?.message)
+        }
                
     } catch (e) {
       console.log(e)
@@ -48,6 +58,7 @@ export default function Login() {
   return (
     <div>
       <h1>page Login</h1>
+      <h1>{messageError}</h1>
       <form onSubmit={handleSubmit}>
         <Input
           name={"email"}
@@ -69,6 +80,17 @@ export default function Login() {
           color="blue"
           text="white"
           title={loading ? "proses" : "login"}
+          //   onClick={() => {
+          //     Cookies.set("myapps_token", "ini isi token");
+          //     return navigate("/user", { replace: true });
+          //   }}
+        />
+        <Button
+          color="blue"
+          text="white"
+          title={"register"} onClick = {()=> {
+            navigate ('/register')
+          }}
           //   onClick={() => {
           //     Cookies.set("myapps_token", "ini isi token");
           //     return navigate("/user", { replace: true });

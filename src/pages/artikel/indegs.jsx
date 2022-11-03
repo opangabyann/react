@@ -3,10 +3,15 @@ import { getAllArtikel } from "../../Api/auth";
 import Button from "../../komponen/button";
 import { useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import { useSelector } from "react-redux";
 
 export default function Artikel() {
   const [artikel, setArtikel] = React.useState([]);
   const navigate = useNavigate();
+  const nama = useSelector((state) => state.authProses.name)
+  const email = useSelector((state) => state.authProses.email)
+
+  console.log("nama =>", nama)
   const [isFetchUser, setIsFetchUser] = React.useState(false);
   const getArtikelhandle = async () => {
     try {
@@ -24,7 +29,10 @@ export default function Artikel() {
     getArtikelhandle();
   }, []);
   return (
+
     <div>
+      <p>{nama}</p>
+      <p>{email}</p>
       <Button
         text="black"
         color="white"
