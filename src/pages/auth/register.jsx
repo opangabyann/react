@@ -11,6 +11,10 @@ export default function Register() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [messageError, setMessageError] = React.useState("");
+    const [nameError, setNameError] = React.useState("");
+    const [emailError, setEmailError] = React.useState("");
+    const [passwordError, setPasswordError] = React.useState("");
+    const [password_confirmationError, setPWConfirmationError] = React.useState("");
   const [Payload, setPayload] = React.useState({
     name: "",
     password: "",
@@ -36,6 +40,10 @@ export default function Register() {
             return navigate('/artikel')
           }else{
             setMessageError(response?.response?.data?.message)
+            setNameError(response?.response?.data?.errors.name)
+            setEmailError(response?.response?.data?.errors.email)
+            setPasswordError(response?.response?.data?.errors.password)
+            setPWConfirmationError(response?.response?.data?.errors.password_confirmation)
           }
     }catch(err){
         console.log(e)
@@ -47,6 +55,7 @@ export default function Register() {
   return (
     <div>
       <h1>page register</h1>
+      <h1 className="text-red-600 italic">{messageError}</h1>
 
       <form onSubmit={handleSubmit}>
         <Input
@@ -57,22 +66,7 @@ export default function Register() {
         
           onChange={handleChange}
         />
-        <Input
-          name={"password"}
-            value={Payload.password}
-          label={"password"}
-          placeholder={"password"}
-          type={"password"}
-          onChange={handleChange}
-        />
-        <Input
-          name={"password_confirmation"}
-            value={Payload.password_confirmation}
-          label={"password_confirmation"}
-          placeholder={"password_confirmation"}
-          type={"password"}
-          onChange={handleChange}
-        />
+        <p className="text-red-600 italic">{nameError}</p>
         <Input
           name={"email"}
             value={Payload.email}
@@ -81,6 +75,25 @@ export default function Register() {
           type={"email"}
           onChange={handleChange}
         />
+        <p className="text-red-600 italic">{emailError}</p>
+        <Input
+          name={"password"}
+            value={Payload.password}
+          label={"password"}
+          placeholder={"password"}
+          type={"password"}
+          onChange={handleChange}
+        />
+        <p className="text-red-600 italic">{passwordError}</p>
+        <Input
+          name={"password_confirmation"}
+            value={Payload.password_confirmation}
+          label={"password_confirmation"}
+          placeholder={"password_confirmation"}
+          type={"password"}
+          onChange={handleChange}
+        />
+        <p className="text-red-600 italic">{password_confirmationError}</p>
         <Button color="blue" text="white" title={loading ?"proses" : "submit"}/>
       </form>
     </div>

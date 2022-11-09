@@ -12,6 +12,7 @@ export default function Artikel() {
   const email = useSelector((state) => state.authProses.email)
 
   console.log("nama =>", nama)
+  console.log("email => ", email)
   const [isFetchUser, setIsFetchUser] = React.useState(false);
   const getArtikelhandle = async () => {
     try {
