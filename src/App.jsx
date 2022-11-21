@@ -1,17 +1,11 @@
 import React from "react";
-import {
-  
-  FaCircleNotch,
-
-  FaSearch,
-} from "react-icons/fa";
+import { FaCircleNotch, FaSearch } from "react-icons/fa";
 import {
   BsFillChatLeftTextFill,
   BsThreeDotsVertical,
   BsFilter,
   BsCheck2All,
 } from "react-icons/bs";
-import wa from "./styles/wa.png";
 
 const App = () => {
   return (
@@ -23,9 +17,8 @@ const App = () => {
           </div>
 
           <div className="flex gap-7">
-            
             <FaCircleNotch
-              className="rotate-[60deg] cursor-pointer hover-icon transition-all ease-in-out"
+              className=" cursor-pointer hover-icon transition-all ease-in-out"
               onMouseOver={({ target }) => (target.style.color = "#cecece")}
               onMouseOut={({ target }) => (target.style.color = "#aebac1")}
               color="#aebac1"
@@ -48,8 +41,6 @@ const App = () => {
           </div>
         </header>
 
-      
-
         <body className="w-full h-[100%] bg-[#111b21] overflow-y-auto overflow-x-hidden">
           <div className="flex pt-3 justify-between px-3 w-full">
             <div className="flex items-center">
@@ -69,42 +60,36 @@ const App = () => {
           </div>
 
           <div className="mt-5 w-full">
-           
-                  <section
-                    
-                    className="space-y-3 w-full hover:bg-[#222e35] cursor-pointer"
-                  >
-                    <div className="pl-3 w-full">
-                      <div className="flex items-center w-full pr-3">
-                        <div className="w-[50px] h-[50px] bg-blue-400 rounded-full mr-5">
-                          <img className="rounded" src="" alt="" />
-                        </div>
-                        <div className="flex flex-col justify-between border-b border-b-[#222d34] py-3 w-full">
-                          <div>
-                            <div className="flex justify-between items-center">
-                              <h1 className="text-[#e3e7e5] font-bold">tes</h1>
-                              <p className="text-[#00a884]">11:30</p>
-                            </div>
-
-                            <div className="flex justify-between items-center">
-                              <div className="flex items-center">
-                                <BsCheck2All
-                                  color="#53bdeb"
-                                  size={20}
-                                  className="mr-1"
-                                />
-                                <p className="text-[#869695]">yowaimo</p>
-                              </div>
-                              
-                            </div>
-                          </div>
-                        </div>
+            <section className="space-y-3 w-full hover:bg-[#222e35] cursor-pointer">
+              <div className="pl-3 w-full">
+                <div className="flex items-center w-full pr-3">
+                  <div className="w-[50px] h-[50px] bg-blue-400 rounded-full mr-5">
+                    <img className="rounded" src="" alt="" />
+                  </div>
+                  <div className="flex flex-col justify-between border-b border-b-[#222d34] py-3 w-full">
+                    <div>
+                      <div className="flex justify-between items-center">
+                        <h1 className="text-[#e3e7e5] font-bold">tes</h1>
+                        <p className="text-[#00a884]">11:30</p>
                       </div>
 
-                      <div></div>
+                      <div className="flex justify-between items-center">
+                        <div className="flex items-center">
+                          <BsCheck2All
+                            color="#53bdeb"
+                            size={20}
+                            className="mr-1"
+                          />
+                          <p className="text-[#869695]">yowaimo</p>
+                        </div>
+                      </div>
                     </div>
-                  </section>
-            
+                  </div>
+                </div>
+
+                <div></div>
+              </div>
+            </section>
           </div>
         </body>
       </section>
@@ -112,7 +97,7 @@ const App = () => {
       <section className=" h-[100%] w-[70%]  bg-[#222e35]">
         <div className="w-full h-full flex flex-col justify-between">
           {/* <div className="w-full bg-[#008069]"></div> */}
-          
+
           <div className="w-full h-2 bg-[#008069]"></div>
         </div>
       </section>
