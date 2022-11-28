@@ -11,5 +11,7 @@ export default function LayoutEffectTutorial (){
         console.log("useEffect")
     },[])
 
-    return <div></div>;
+    return <div>
+        {console.log("jalan")}
+    </div>;
 }
